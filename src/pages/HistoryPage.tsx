@@ -24,8 +24,8 @@ function HistoryCard({ entry }: { entry: HistoryEntry }) {
           </div>
         </div>
         <div style={{ textAlign: 'right' }}>
-          <p className="font-vt" style={{ color: 'var(--neon-blue)', fontSize: '1rem' }}>{dateStr}</p>
-          <p className="font-vt" style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>{timeStr}</p>
+          <p className="font-righteous" style={{ color: 'var(--neon-blue)', fontSize: '1rem' }}>{dateStr}</p>
+          <p className="font-righteous" style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>{timeStr}</p>
         </div>
       </div>
 
@@ -48,7 +48,7 @@ function HistoryCard({ entry }: { entry: HistoryEntry }) {
               key={p}
               style={{ fontSize: '0.7rem', background: 'rgba(255,215,0,0.1)', border: '1px solid rgba(255,215,0,0.3)', borderRadius: 12, padding: '2px 8px', color: 'var(--gold-dark)' }}
             >
-              {p === 'matheus' ? '👨 Matheus' : '👩 Amanda'}
+              {p === 'mateus' ? '👨 Mateus' : '👩 Amanda'}
             </span>
           ))}
         </div>
@@ -77,15 +77,15 @@ export default function HistoryPage() {
       <div style={{ display: 'flex', gap: 10, marginBottom: 16 }}>
         <div className="gold-card" style={{ flex: 1, padding: '10px 12px', textAlign: 'center' }}>
           <p style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Pedidos</p>
-          <p className="font-vt gold-text" style={{ fontSize: '2rem' }}>{history.length}</p>
+          <p className="font-righteous gold-text" style={{ fontSize: '2rem' }}>{history.length}</p>
         </div>
         <div className="gold-card" style={{ flex: 1, padding: '10px 12px', textAlign: 'center' }}>
           <p style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Nota Média</p>
-          <p className="font-vt gold-text" style={{ fontSize: '2rem' }}>{avgRating}</p>
+          <p className="font-righteous gold-text" style={{ fontSize: '2rem' }}>{avgRating}</p>
         </div>
         <div className="gold-card" style={{ flex: 1, padding: '10px 12px', textAlign: 'center' }}>
           <p style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Total Gasto</p>
-          <p className="font-vt gold-text" style={{ fontSize: '1.4rem' }}>
+          <p className="font-righteous gold-text" style={{ fontSize: '1.4rem' }}>
             R${totalSpent.toFixed(0)}
           </p>
         </div>

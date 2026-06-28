@@ -18,7 +18,7 @@ export default function ResultModal({ emoji, title, subtitle, stage, onAccept, o
         className="gold-card bounce-in"
         style={{ width: '100%', maxWidth: 380, padding: '32px 24px', textAlign: 'center' }}
       >
-        <div style={{ fontSize: '0.8rem', color: 'var(--neon-blue)', marginBottom: 8, fontFamily: 'VT323, monospace', letterSpacing: '0.15em' }}>
+        <div style={{ fontSize: '0.8rem', color: 'var(--neon-blue)', marginBottom: 8, fontFamily: 'Righteous, sans-serif', letterSpacing: '0.08em' }}>
           {stage === 1 ? '✦ ETAPA 1 — CATEGORIA ✦' : '✦ ETAPA 2 — INGREDIENTE ✦'}
         </div>
 
@@ -36,7 +36,7 @@ export default function ResultModal({ emoji, title, subtitle, stage, onAccept, o
           <p style={{ color: 'var(--text-dim)', fontSize: '1rem', marginBottom: 16 }}>{subtitle}</p>
         )}
 
-        <p className="blink font-vt" style={{ fontSize: '1.4rem', color: 'var(--neon-pink)', marginBottom: 24 }}>
+        <p className="blink font-display" style={{ fontSize: '1.4rem', color: 'var(--neon-pink)', marginBottom: 24 }}>
           ★ E AÍ, BORA?! ★
         </p>
 

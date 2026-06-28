@@ -24,7 +24,7 @@ function RangeSlider({ label, leftLabel, rightLabel, value, onChange }: RangeSli
     <div style={{ marginBottom: 12 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
         <span style={{ color: 'var(--gold)', fontSize: '0.85rem', fontFamily: 'Righteous, sans-serif' }}>{label}</span>
-        <span style={{ color: 'var(--neon-blue)', fontSize: '0.8rem', fontFamily: 'VT323, monospace' }}>
+        <span style={{ color: 'var(--neon-blue)', fontSize: '0.8rem', fontFamily: 'Righteous, sans-serif' }}>
           {min} – {max}
         </span>
       </div>
@@ -243,18 +243,18 @@ export default function RoulettePage() {
           Participantes
         </p>
         <div style={{ display: 'flex', gap: 8 }}>
-          {(['matheus', 'amanda'] as ProfileName[]).map((p) => (
+          {(['mateus', 'amanda'] as ProfileName[]).map((p) => (
             <button
               key={p}
               className={`participant-btn ${participants.includes(p) ? 'active' : ''}`}
               onClick={() => toggleParticipant(p)}
             >
-              {p === 'matheus' ? '👨 Matheus' : '👩 Amanda'}
+              {p === 'mateus' ? '👨 Mateus' : '👩 Amanda'}
             </button>
           ))}
           <button
             className={`participant-btn ${participants.length === 2 ? 'active' : ''}`}
-            onClick={() => setParticipants(['matheus', 'amanda'])}
+            onClick={() => setParticipants(['mateus', 'amanda'])}
           >
             👫 Ambos
           </button>
@@ -284,7 +284,7 @@ export default function RoulettePage() {
 
       {/* Wheel */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
-        <div style={{ fontSize: '0.7rem', fontFamily: 'VT323, monospace', color: 'var(--neon-blue)', letterSpacing: '0.2em' }}>
+        <div style={{ fontSize: '0.75rem', fontFamily: 'Righteous, sans-serif', color: 'var(--neon-blue)', letterSpacing: '0.1em' }}>
           {showCatWheel ? '▼ ETAPA 1: CATEGORIA ▼' : '▼ ETAPA 2: SABOR ▼'}
         </div>
 

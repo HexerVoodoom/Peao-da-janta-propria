@@ -1,4 +1,4 @@
-export type ProfileName = 'matheus' | 'amanda';
+export type ProfileName = 'mateus' | 'amanda';
 
 export type IngredientCategory =
   | 'verdura'
@@ -39,7 +39,7 @@ export interface Profile {
 }
 
 export interface Profiles {
-  matheus: Profile;
+  mateus: Profile;
   amanda: Profile;
 }
 

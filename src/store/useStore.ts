@@ -78,7 +78,7 @@ export const useStore = create<AppStore>()(
         }),
 
       // Roulette config
-      participants: ['matheus', 'amanda'],
+      participants: ['mateus', 'amanda'],
       setParticipants: (participants) => set({ participants }),
       priceRange: [1, 5],
       setPriceRange: (priceRange) => set({ priceRange }),

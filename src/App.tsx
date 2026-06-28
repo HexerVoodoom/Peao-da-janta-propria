@@ -61,8 +61,8 @@ export default function App() {
               🎰 Peão da Janta Própria
             </h1>
             <p
-              className="font-vt blink"
-              style={{ fontSize: '0.9rem', color: 'var(--neon-pink)', letterSpacing: '0.1em', marginTop: 1 }}
+              className="font-display blink"
+              style={{ fontSize: '0.9rem', color: 'var(--neon-pink)', letterSpacing: '0.05em', marginTop: 1 }}
             >
               ★ SORTEIE SUA JANTA ★
             </p>
@@ -76,7 +76,7 @@ export default function App() {
                 borderRadius: 4,
                 padding: '2px 6px',
                 color: 'var(--neon-pink)',
-                fontFamily: 'VT323, monospace',
+                fontFamily: 'Righteous, sans-serif',
               }}
             >
               MODO LOCAL

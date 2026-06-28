@@ -93,7 +93,7 @@ export function subscribeHistory(cb: (h: HistoryEntry[]) => void) {
 // ── Default data ───────────────────────────────────────────
 
 export const DEFAULT_PROFILES: Profiles = {
-  matheus: { likes: [], dislikes: [] },
+  mateus: { likes: [], dislikes: [] },
   amanda: { likes: [], dislikes: [] },
 };
 

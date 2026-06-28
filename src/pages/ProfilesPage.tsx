@@ -5,7 +5,7 @@ import { saveProfiles } from '../firebase/db';
 import type { ProfileName, IngredientCategory } from '../types';
 
 const PROFILES: { id: ProfileName; label: string; emoji: string }[] = [
-  { id: 'matheus', label: 'Matheus', emoji: '👨' },
+  { id: 'mateus', label: 'Mateus', emoji: '👨' },
   { id: 'amanda', label: 'Amanda', emoji: '👩' },
 ];
 
@@ -13,7 +13,7 @@ const CATEGORIES = Object.keys(INGREDIENT_CATEGORY_LABELS) as IngredientCategory
 
 export default function ProfilesPage() {
   const { profiles, toggleIngredientPreference } = useStore();
-  const [activeProfile, setActiveProfile] = useState<ProfileName>('matheus');
+  const [activeProfile, setActiveProfile] = useState<ProfileName>('mateus');
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
 
@@ -53,18 +53,18 @@ export default function ProfilesPage() {
         ))}
       </div>
 
-      <div className="gold-card" style={{ padding: 16, borderTopLeftRadius: activeProfile === 'matheus' ? 0 : 12 }}>
+      <div className="gold-card" style={{ padding: 16, borderTopLeftRadius: activeProfile === 'mateus' ? 0 : 12 }}>
         {/* Summary */}
         <div style={{ display: 'flex', gap: 12, marginBottom: 16, flexWrap: 'wrap' }}>
           <div style={{ flex: 1, minWidth: 140, background: 'rgba(0,255,136,0.08)', border: '1px solid rgba(0,255,136,0.2)', borderRadius: 8, padding: '8px 12px' }}>
             <p style={{ fontSize: '0.75rem', color: 'var(--neon-green)', marginBottom: 4 }}>✅ Gosta</p>
-            <p className="font-vt" style={{ fontSize: '1.6rem', color: 'var(--neon-green)' }}>
+            <p className="font-righteous" style={{ fontSize: '1.6rem', color: 'var(--neon-green)' }}>
               {profile.likes.length}
             </p>
           </div>
           <div style={{ flex: 1, minWidth: 140, background: 'rgba(255,45,120,0.08)', border: '1px solid rgba(255,45,120,0.2)', borderRadius: 8, padding: '8px 12px' }}>
             <p style={{ fontSize: '0.75rem', color: 'var(--neon-pink)', marginBottom: 4 }}>❌ Não gosta</p>
-            <p className="font-vt" style={{ fontSize: '1.6rem', color: 'var(--neon-pink)' }}>
+            <p className="font-righteous" style={{ fontSize: '1.6rem', color: 'var(--neon-pink)' }}>
               {profile.dislikes.length}
             </p>
           </div>
