@@ -30,6 +30,10 @@ interface AppStore {
   setPriceRange: (r: [number, number]) => void;
   healthRange: [number, number];
   setHealthRange: (r: [number, number]) => void;
+  enabledCategories: string[];
+  toggleEnabledCategory: (id: string) => void;
+  setEnabledCategories: (ids: string[]) => void;
+  enableAllCategories: () => void;
 
   // Weights
   categoryWeights: CategoryWeights;
@@ -84,6 +88,19 @@ export const useStore = create<AppStore>()(
       setPriceRange: (priceRange) => set({ priceRange }),
       healthRange: [1, 5],
       setHealthRange: (healthRange) => set({ healthRange }),
+      enabledCategories: Object.keys(DEFAULT_WEIGHTS.categories),
+      toggleEnabledCategory: (id) =>
+        set((state) => ({
+          enabledCategories: state.enabledCategories.includes(id)
+            ? state.enabledCategories.length > 1
+              ? state.enabledCategories.filter((c) => c !== id)
+              : state.enabledCategories
+            : [...state.enabledCategories, id],
+        })),
+      setEnabledCategories: (ids) =>
+        set({ enabledCategories: ids.length > 0 ? ids : [Object.keys(DEFAULT_WEIGHTS.categories)[0]] }),
+      enableAllCategories: () =>
+        set({ enabledCategories: Object.keys(DEFAULT_WEIGHTS.categories) }),
 
       // Weights
       categoryWeights: DEFAULT_WEIGHTS.categories,
@@ -125,6 +142,7 @@ export const useStore = create<AppStore>()(
         participants: state.participants,
         priceRange: state.priceRange,
         healthRange: state.healthRange,
+        enabledCategories: state.enabledCategories,
         categoryWeights: state.categoryWeights,
         flavorWeights: state.flavorWeights,
         history: state.history,

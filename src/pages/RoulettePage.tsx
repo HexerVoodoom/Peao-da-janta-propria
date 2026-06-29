@@ -53,6 +53,7 @@ export default function RoulettePage() {
     participants, setParticipants,
     priceRange, setPriceRange,
     healthRange, setHealthRange,
+    enabledCategories, toggleEnabledCategory, setEnabledCategories, enableAllCategories,
     profiles,
     categoryWeights, flavorWeights,
     decreaseCategoryWeight, decreaseFlavorWeight,
@@ -80,12 +81,13 @@ export default function RoulettePage() {
   const eligibleCategories = useCallback((): FoodCategory[] => {
     const dislikes = combinedDislikes();
     return FOOD_CATEGORIES.filter((cat) => {
+      if (!enabledCategories.includes(cat.id)) return false;
       if (cat.priceLevel < priceRange[0] || cat.priceLevel > priceRange[1]) return false;
       if (cat.healthLevel < healthRange[0] || cat.healthLevel > healthRange[1]) return false;
       if (cat.relatedIngredients.some((id) => dislikes.has(id))) return false;
       return true;
     });
-  }, [combinedDislikes, priceRange, healthRange]);
+  }, [combinedDislikes, priceRange, healthRange, enabledCategories]);
 
   const catWheelItems = useCallback((): WheelItem[] => {
     return eligibleCategories().map((cat) => ({
@@ -277,8 +279,58 @@ export default function RoulettePage() {
           value={healthRange}
           onChange={setHealthRange}
         />
-        <p style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: 4 }}>
-          {catItems.length} opções disponíveis
+      </div>
+
+      {/* Category toggles */}
+      <div className="gold-card" style={{ padding: '10px 14px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+          <p style={{ fontSize: '0.75rem', color: 'var(--gold-dark)', fontFamily: 'Righteous, sans-serif', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            🍽️ Categorias na Roleta
+          </p>
+          <div style={{ display: 'flex', gap: 6 }}>
+            <button
+              onClick={enableAllCategories}
+              style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: 6, border: '1px solid var(--gold-dark)', background: 'transparent', color: 'var(--gold-dark)', cursor: 'pointer' }}
+            >
+              Todas
+            </button>
+            <button
+              onClick={() => setEnabledCategories([])}
+              style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: 6, border: '1px solid rgba(255,45,120,0.4)', background: 'transparent', color: 'var(--neon-pink)', cursor: 'pointer' }}
+            >
+              Limpar
+            </button>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6 }}>
+          {FOOD_CATEGORIES.map((cat) => {
+            const on = enabledCategories.includes(cat.id);
+            return (
+              <button
+                key={cat.id}
+                onClick={() => toggleEnabledCategory(cat.id)}
+                style={{
+                  display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
+                  padding: '8px 4px', borderRadius: 10, cursor: 'pointer',
+                  border: on ? '2px solid var(--gold)' : '2px solid rgba(255,215,0,0.15)',
+                  background: on ? 'rgba(255,215,0,0.12)' : 'transparent',
+                  color: on ? 'var(--gold)' : 'var(--text-dim)',
+                  transition: 'all 0.15s',
+                  fontSize: '0.7rem',
+                  fontFamily: 'Righteous, sans-serif',
+                  lineHeight: 1.2,
+                  textAlign: 'center',
+                  opacity: on ? 1 : 0.5,
+                }}
+              >
+                <span style={{ fontSize: '1.3rem' }}>{cat.emoji}</span>
+                <span>{cat.name}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p style={{ fontSize: '0.72rem', color: 'var(--text-dim)', marginTop: 8 }}>
+          {catItems.length} de {enabledCategories.length} opções disponíveis
         </p>
       </div>
 
